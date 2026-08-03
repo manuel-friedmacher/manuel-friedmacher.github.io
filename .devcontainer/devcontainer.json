@@ -1,6 +1,8 @@
 {
-  "name": "devcontainer-temp",
-  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "name": "Template Dev Container",
+  //"image": "mcr.microsoft.com/devcontainers/base:debian", // Uncomment this line to use Debain Linux as the base image for the dev container.
+  //"image": "mcr.microsoft.com/devcontainers/base:bookworm", // Uncomment this line to use Bookworm Linux as the base image for the dev container.
+  "image": "mcr.microsoft.com/devcontainers/python:latest", // Uncomment this line to use Python as the base image for the dev container.
   "initializeCommand": "sh .devcontainer/initialize.sh",
   "postCreateCommand": "sh .devcontainer/post-create.sh",
   "runArgs": [
@@ -9,6 +11,8 @@
     ".devcontainer/devcontainer.env"
   ],
   "features": {
+    // Uncomment the following lines to install additional features for Terraform in the dev container.
+    /*
     "ghcr.io/devcontainers/features/terraform:1": {
       "version": "latest",
       "tflint": "none"
@@ -16,15 +20,26 @@
     "ghcr.io/dhoeric/features/terraform-docs:1": {
       "version": "latest"
     }
+    */
+
+    // Uncomment the following lines to install additional features for Claude AI in the dev container.
+    /*
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+    */
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "hashicorp.terraform",
-        "hashicorp.hcl",
-        "anthropic.claude-code"
+        // Uncomment the following lines to install additional VS Code extensions in the dev container.
+        //"hashicorp.terraform", // Terraform
+        //"hashicorp.hcl", // Terraform HCL
+        //"anthropic.claude-code", // Claude AI
+        //"ms-python.python", // Python
+        //"ms-python.vscode-pylance", // Python Pylance
       ],
       "settings": {
+        // Uncomment the following lines to configure VS Code settings for Terraform files in the dev container.
+        /*
         "[terraform]": {
           "editor.defaultFormatter": "hashicorp.terraform",
           "editor.formatOnSave": true
@@ -33,6 +48,17 @@
           "editor.defaultFormatter": "hashicorp.terraform",
           "editor.formatOnSave": true
         }
+        */
+
+        // Uncomment the following lines to configure VS Code settings for Python files in the dev container.
+        /* 
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "editor.formatOnSave": true,
+        "editor.rulers": [88],
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.python"
+        }
+        */
       }
     }
   },
