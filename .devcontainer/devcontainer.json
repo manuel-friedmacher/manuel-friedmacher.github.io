@@ -1,0 +1,42 @@
+{
+  "name": "devcontainer-temp",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "initializeCommand": "sh .devcontainer/initialize.sh",
+  "postCreateCommand": "sh .devcontainer/post-create.sh",
+  "runArgs": [
+    "--network=host",
+    "--env-file",
+    ".devcontainer/devcontainer.env"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/terraform:1": {
+      "version": "latest",
+      "tflint": "none"
+    },
+    "ghcr.io/dhoeric/features/terraform-docs:1": {
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hashicorp.terraform",
+        "hashicorp.hcl",
+        "anthropic.claude-code"
+      ],
+      "settings": {
+        "[terraform]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": true
+        },
+        "[terraform-vars]": {
+          "editor.defaultFormatter": "hashicorp.terraform",
+          "editor.formatOnSave": true
+        }
+      }
+    }
+  },
+  "mounts": [],
+  "remoteUser": "vscode",
+  "remoteEnv": {}
+}
